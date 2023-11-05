@@ -22,7 +22,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
+    // Connect the client to the server	(optional  starting in v4.7)
     // await client.connect();
     const runningCinemasCollections = client
       .db("cinematicDb")
@@ -34,7 +34,7 @@ async function run() {
       .db("cinematicDb")
       .collection("selectedmovies");
 
-    // get running cinemas
+    // get running  cinemas
     app.get("/runningcinemas", async (req, res) => {
       const result = await runningCinemasCollections.find().toArray();
       res.send(result);
@@ -54,12 +54,10 @@ async function run() {
 
         console.log("Movie data saved to MongoDB");
 
-        res
-          .status(200)
-          .json({
-            message: "Movie data saved to MongoDB",
-            data: result.ops[0],
-          });
+        res.status(200).json({
+          message: "Movie data saved to MongoDB",
+          data: result.ops[0],
+        });
       } catch (error) {
         res.status(500).json({ error: "Failed to save movie data to MongoDB" });
       }
